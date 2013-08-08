@@ -215,3 +215,8 @@ Limit results to items that match any of the property/value pairs given in the a
 ##### $query->where_all(array $where)
 
 Limit results to items that match all of the property/value pairs given in the array.
+
+License
+-------
+
+This code is licensed under the MIT license.
