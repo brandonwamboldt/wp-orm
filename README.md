@@ -3,6 +3,17 @@ WordPress ORM
 
 WordPress ORM is a small library that adds a basic ORM into WordPress, which is easily extendable and includes models for core WordPress models such as posts, pages, comments and users. It's designed to allow you to easily add new models other than custom post types, and not have to write a lot of manual SQL.
 
+Installation
+------------
+
+While you can install and activate it like a normal plugin, I'd recommend putting it in the `/wp-content/mu-plugins` folder and adding a script called `wp-orm.php` to load the main plugin file (only top level `.php` files are loaded from `mu-plugins`).
+
+`wp-orm.php`:
+
+```
+<?php require 'wp-orm/wp-orm.php';
+```
+
 Examples
 --------
 
