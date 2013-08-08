@@ -116,51 +116,102 @@ class Venue extends BaseModel
 
 You can now use this venue, persist it, and use the custom query DSL shown above to query it.
 
+Model Methods
+-------------
+
+##### Model::get_table()
+
+This is a static method that you must define in your models, and should return the table to persist data to.
+
+##### Model::get_searchable_fields()
+
+This is a static method that you must define in your models, and should return an array of properties to search when doing a search query.
+
+##### Model::get_primary_key()
+
+Return's the property used as a primary key. Defaults to `id`.
+
+##### Model::create(array $properties)
+
+Create a new model from an array of properties.
+
+##### Model::find_one_by(string $property, mixed $value)
+
+Find a single model with the specified property value.
+
+##### Model::find_one(integer $id)
+
+Find a single model who's primary key is equal to the given ID.
+
+##### Model::query()
+
+Return a new `WordPress\Orm\Query` object.
+
+##### Model::all()
+
+Return every single model in the database.
+
+##### $model->primary_key()
+
+Return the model's primary key (the value, not the property name).
+
+##### $model->to_array()
+
+Return all of the model's properties as an array.
+
+##### $model->flatten_props(array $props)
+
+Call right before `save()`, should flatten any objects in the properties into strings so they can be persisted. Defaults to flattening `DateTime` objects into a timestamp and arrays into a serialized array.
+
+##### $model->save()
+
+Save your model to the database. Creates a new row if the model doesn't have an ID, or updates an existing row if their is an ID.
+
 ORM Queries
 -----------
 
 Below are the functions you have access to after you call the `Model::query()` function.
 
-##### #limit(integer $limit)
+##### $query->limit(integer $limit)
 
 Limits the number of results returned using an SQL `LIMIT` clause.
 
-##### #offset(integer $offset)
+##### $query->offset(integer $offset)
 
 Offset the results returned, used with pagination. Uses the SQL `OFFSET` clause.
 
-##### #sort_by(string $property)
+##### $query->sort_by(string $property)
 
 Sort results by the specified property
 
-##### #order(string $order)
+##### $query->order(string $order)
 
 Order the results in the given order. Can be one of `ASC` or `DESC`.
 
-##### #search(string $search_term)
+##### $query->search(string $search_term)
 
 Limit results to items matching the given search term. Searches the properties returned by `Model::get_searchable_fields`.
 
-##### #where(string $property, string $value)
+##### $query->where(string $property, string $value)
 
 Add a parameter to the where clause. Equivalent to ` WHERE $property = '$value'`. `$value` is automatically escaped.
 
-##### #where_not(string $property, string $value)
+##### $query->where_not(string $property, string $value)
 
 Add a parameter to the where clause. Equivalent to ` WHERE $property != '$value'`. `$value` is automatically escaped.
 
-##### #where_like(string $property, string $value)
+##### $query->where_like(string $property, string $value)
 
 Add a parameter to the where clause. Equivalent to ` WHERE $property LIKE '$value'`. `$value` is automatically escaped.
 
-##### #where_not_like(string $property, string $value)
+##### $query->where_not_like(string $property, string $value)
 
 Add a parameter to the where clause. Equivalent to ` WHERE $property NOT LIKE '$value'`. `$value` is automatically escaped.
 
-##### #where_any(array $where)
+##### $query->where_any(array $where)
 
 Limit results to items that match any of the property/value pairs given in the array. Must match at least one.
 
-##### #where_all(array $where)
+##### $query->where_all(array $where)
 
 Limit results to items that match all of the property/value pairs given in the array.
