@@ -45,7 +45,7 @@ abstract class BaseModel
 		$properties  = array_intersect_key($properties, $model_props);
 
 		foreach ($properties as $property => $value) {
-			$this->{$property} = $value;
+			$this->{$property} = maybe_unserialize($value);
 		}
 	}
 
