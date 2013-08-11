@@ -41,7 +41,7 @@ abstract class BaseModel
 	 */
 	public function __construct(array $properties = array())
 	{
-		$model_props = get_object_vars($this);
+		$model_props = $this->properties();
 		$properties  = array_intersect_key($properties, $model_props);
 
 		foreach ($properties as $property => $value) {
@@ -60,7 +60,7 @@ abstract class BaseModel
 	{
 		// Getters following the pattern 'get_{$property}'
 		if (substr($function, 0, 4) == 'get_') {
-			$model_props = get_object_vars($this);
+			$model_props = $this->properties();
 			$property    = substr($function, 4);
 
 			if (array_key_exists($property, $model_props)) {
@@ -70,7 +70,7 @@ abstract class BaseModel
 
 		// Setters following the pattern 'set_{$property}'
 		if (substr($function, 0, 4) == 'set_') {
-			$model_props = get_object_vars($this);
+			$model_props = $this->properties();
 			$property    = substr($function, 4);
 
 			if (array_key_exists($property, $model_props)) {
@@ -96,7 +96,7 @@ abstract class BaseModel
 	 */
 	public function to_array()
 	{
-		return get_object_vars($this);
+		return $this->properties();
 	}
 
 	/**
@@ -119,6 +119,17 @@ abstract class BaseModel
 	}
 
 	/**
+	 * Return an array of all the properties for this model. By default, returns
+	 * every class variable.
+	 *
+	 * @return array
+	 */
+	public function properties()
+	{
+		return get_object_vars($this);
+	}
+
+	/**
 	 * Save this model to the database. Will create a new record if the ID
 	 * property isn't set, or update an existing record if the ID property is
 	 * set.
@@ -130,7 +141,7 @@ abstract class BaseModel
 		global $wpdb;
 
 		// Get the model's properties
-		$props = get_object_vars($this);
+		$props = $this->properties();
 
 		// Flatten complex objects
 		$props = $this->flatten_props($props);
