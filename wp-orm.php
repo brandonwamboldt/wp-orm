@@ -16,3 +16,5 @@ require 'models/Comment.php';
 require 'models/Post.php';
 require 'models/Page.php';
 require 'models/User.php';
+require 'admin/ListTable.php';
+require 'admin/AdminHelper.php';
