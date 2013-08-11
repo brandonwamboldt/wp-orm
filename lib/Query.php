@@ -272,11 +272,22 @@ class Query
 	}
 
 	/**
+	 * Runs the same query as find, but with no limit and don't retrieve the
+	 * results, just the total items found.
+	 *
+	 * @return integer
+	 */
+	public function total_count()
+	{
+		return $this->find(true);
+	}
+
+	/**
 	 * Compose & execute our query.
 	 *
 	 * @return array
 	 */
-	public function find()
+	public function find($only_count = false)
 	{
 		global $wpdb;
 
@@ -362,6 +373,12 @@ class Query
 		}
 
 		// Query
+		if ($only_count) {
+			$query = "SELECT COUNT(*) FROM `{$table}`{$where}";
+
+			return (int) $wpdb->get_var($query);
+		}
+
 		$query = "SELECT * FROM `{$table}`{$where}{$order}{$limit}{$offset}";
 
 		$results = $wpdb->get_results($query);
