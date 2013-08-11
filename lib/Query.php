@@ -331,6 +331,28 @@ class Query
 				$where .= ' AND `' . $q['column'] . '` NOT LIKE "' . esc_sql($q['value']) . '"';
 			}
 
+			// where_in
+			elseif ($q['type'] == 'in') {
+				$where .= ' AND `' . $q['column'] . '` IN (';
+
+				foreach ($q['value'] as $value) {
+					$where .= '"' . esc_sql($value) . '",';
+				}
+
+				$where = substr($where, 0, -1) . ')';
+			}
+
+			// where_not_in
+			elseif ($q['type'] == 'not_in') {
+				$where .= ' AND `' . $q['column'] . '` NOT IN (';
+
+				foreach ($q['value'] as $value) {
+					$where .= '"' . esc_sql($value) . '",';
+				}
+
+				$where = substr($where, 0, -1) . ')';
+			}
+
 			// where_any
 			elseif ($q['type'] == 'any') {
 				$where .= ' AND (';
