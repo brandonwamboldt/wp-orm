@@ -203,6 +203,62 @@ class Query
 	}
 
 	/**
+	 * Add a `<` clause to the search query.
+	 *
+	 * @param  string $column
+	 * @param  string $value
+	 * @return self
+	 */
+	public function where_lt($column, $value)
+	{
+		$this->where[] = ['type' => 'lt', 'column' => $column, 'value' => $value];
+
+		return $this;
+	}
+
+	/**
+	 * Add a `<=` clause to the search query.
+	 *
+	 * @param  string $column
+	 * @param  string $value
+	 * @return self
+	 */
+	public function where_lte($column, $value)
+	{
+		$this->where[] = ['type' => 'lte', 'column' => $column, 'value' => $value];
+
+		return $this;
+	}
+
+	/**
+	 * Add a `>` clause to the search query.
+	 *
+	 * @param  string $column
+	 * @param  string $value
+	 * @return self
+	 */
+	public function where_gt($column, $value)
+	{
+		$this->where[] = ['type' => 'gt', 'column' => $column, 'value' => $value];
+
+		return $this;
+	}
+
+	/**
+	 * Add a `>=` clause to the search query.
+	 *
+	 * @param  string $column
+	 * @param  string $value
+	 * @return self
+	 */
+	public function where_gte($column, $value)
+	{
+		$this->where[] = ['type' => 'gte', 'column' => $column, 'value' => $value];
+
+		return $this;
+	}
+
+	/**
 	 * Add an `IN` clause to the search query.
 	 *
 	 * @param  string $column
@@ -329,6 +385,26 @@ class Query
 			// where_not_like
 			elseif ($q['type'] == 'not_like') {
 				$where .= ' AND `' . $q['column'] . '` NOT LIKE "' . esc_sql($q['value']) . '"';
+			}
+
+			// where_lt
+			elseif ($q['type'] == 'lt') {
+				$where .= ' AND `' . $q['column'] . '` < "' . esc_sql($q['value']) . '"';
+			}
+
+			// where_lte
+			elseif ($q['type'] == 'lte') {
+				$where .= ' AND `' . $q['column'] . '` <= "' . esc_sql($q['value']) . '"';
+			}
+
+			// where_gt
+			elseif ($q['type'] == 'gt') {
+				$where .= ' AND `' . $q['column'] . '` > "' . esc_sql($q['value']) . '"';
+			}
+
+			// where_gte
+			elseif ($q['type'] == 'gte') {
+				$where .= ' AND `' . $q['column'] . '` >= "' . esc_sql($q['value']) . '"';
 			}
 
 			// where_in

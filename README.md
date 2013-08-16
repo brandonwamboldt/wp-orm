@@ -208,6 +208,22 @@ Add a parameter to the where clause. Equivalent to ` WHERE $property LIKE '$valu
 
 Add a parameter to the where clause. Equivalent to ` WHERE $property NOT LIKE '$value'`. `$value` is automatically escaped.
 
+##### $query->where_lt(string $property, string $value)
+
+Add a parameter to the where clause. Equivalent to ` WHERE $property < '$value'`. `$value` is automatically escaped.
+
+##### $query->where_lte(string $property, string $value)
+
+Add a parameter to the where clause. Equivalent to ` WHERE $property <= '$value'`. `$value` is automatically escaped.
+
+##### $query->where_gt(string $property, string $value)
+
+Add a parameter to the where clause. Equivalent to ` WHERE $property > '$value'`. `$value` is automatically escaped.
+
+##### $query->where_gte(string $property, string $value)
+
+Add a parameter to the where clause. Equivalent to ` WHERE $property >= '$value'`. `$value` is automatically escaped.
+
 ##### $query->where_any(array $where)
 
 Limit results to items that match any of the property/value pairs given in the array. Must match at least one.
