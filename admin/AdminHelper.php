@@ -2,8 +2,6 @@
 
 namespace WordPress\ORM\Admin;
 
-#AdminHelper::render_list_table_page('Venues', $list_table);
-
 /**
  * Hey
  *
