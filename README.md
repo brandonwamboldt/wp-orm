@@ -224,6 +224,14 @@ Add a parameter to the where clause. Equivalent to ` WHERE $property > '$value'`
 
 Add a parameter to the where clause. Equivalent to ` WHERE $property >= '$value'`. `$value` is automatically escaped.
 
+##### $query->where_in(string $column, array $in)
+
+Limit results to items where the given column is one of the given values. Equivalent to ` WHERE $property IN ('value1', 'value2')` where `value1` and `value2` are values in the array.
+
+##### $query->where_not_in(string $column, array $in)
+
+Limit results to items where the given column is not one of the given values. Equivalent to ` WHERE $property NOT IN ('value1', 'value2')` where `value1` and `value2` are values in the array.
+
 ##### $query->where_any(array $where)
 
 Limit results to items that match any of the property/value pairs given in the array. Must match at least one.
