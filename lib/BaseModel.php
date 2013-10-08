@@ -112,6 +112,8 @@ abstract class BaseModel
 				$props[$property] = $value->format('Y-m-d H:i:s');
 			} elseif (is_array($value)) {
 				$props[$property] = serialize($value);
+			} elseif ($value instanceof AbstractClass) {
+				$props[$property] = $value->primary_key();
 			}
 		}
 
