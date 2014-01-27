@@ -171,6 +171,26 @@ abstract class BaseModel
 	}
 
 	/**
+	 * Delete the row from the database. Returns true if it was successful
+	 * or false if it was not.
+	 *
+	 * @return boolean
+	 */
+	public function delete()
+	{
+		global $wpdb;
+
+		if ($wpdb->delete(static::get_table(), [static::get_primary_key() => $this->{static::get_primary_key()}]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	/**
 	 * Find a specific model by a given property value.
 	 *
 	 * @param  string $property
