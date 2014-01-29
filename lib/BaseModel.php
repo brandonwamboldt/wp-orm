@@ -180,14 +180,7 @@ abstract class BaseModel
 	{
 		global $wpdb;
 
-		if ($wpdb->delete(static::get_table(), [static::get_primary_key() => $this->{static::get_primary_key()}]))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return $wpdb->delete(static::get_table(), [static::get_primary_key() => $this->{static::get_primary_key()}]);
 	}
 
 	/**
