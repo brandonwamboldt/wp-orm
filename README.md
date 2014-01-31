@@ -33,7 +33,7 @@ $pages = Page::query()
 #### Find a  user by their login
 
 ```
-use WordPress\Orm\Model\Page;
+use WordPress\Orm\Model\User;
 
 $user = User::find_one_by('user_login', 'brandon');
 
@@ -166,6 +166,10 @@ Call right before `save()`, should flatten any objects in the properties into st
 ##### $model->save()
 
 Save your model to the database. Creates a new row if the model doesn't have an ID, or updates an existing row if their is an ID.
+
+##### $model->delete()
+
+Delete the model from the database. Returns true if it was successful or false if it was not.
 
 ORM Queries
 -----------
