@@ -171,7 +171,7 @@ abstract class BaseModel
 	}
 
 	/**
-	 * Delete the row from the database. Returns true if it was successful
+	 * Delete the model from the database. Returns true if it was successful
 	 * or false if it was not.
 	 *
 	 * @return boolean
