@@ -10,7 +10,7 @@ While you can install and activate it like a normal plugin, I'd recommend puttin
 
 `wp-orm.php`:
 
-```
+```php
 <?php require 'wp-orm/wp-orm.php';
 ```
 
@@ -169,7 +169,7 @@ Save your model to the database. Creates a new row if the model doesn't have an 
 
 ##### $model->delete()
 
-Delete the model from the database. Returns true if it was successful or false if it was not.
+Delete the model from the database. Returns `true` if it was successful or `false` if it was not.
 
 ORM Queries
 -----------
