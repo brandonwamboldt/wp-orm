@@ -19,7 +19,7 @@ Examples
 
 #### Get 5 published pages, ordered by post title.
 
-```
+```php
 use WordPress\Orm\Model\Page;
 
 $pages = Page::query()
@@ -32,7 +32,7 @@ $pages = Page::query()
 
 #### Find a  user by their login
 
-```
+```php
 use WordPress\Orm\Model\User;
 
 $user = User::find_one_by('user_login', 'brandon');
@@ -44,7 +44,7 @@ print_r($user->to_array());
 
 #### Example of a more complex query
 
-```
+```php
 use WordPress\Orm\Model\Post;
 
 $posts = Post::query()
@@ -59,7 +59,7 @@ $posts = Post::query()
 
 #### Updating a model
 
-```
+```php
 use WordPress\Orm\Model\Post;
 
 $post = Post::find_one(1204);
@@ -71,7 +71,7 @@ $post->save();
 
 Users, posts, pages and comments all support meta data.
 
-```
+```php
 $post = Post::find_one(1337);
 $post->get_metadata('_edit_lock');
 $post->update_metadata('_edit_lock', '');
@@ -83,7 +83,7 @@ Meta data is saved immediately using WordPress meta data functions under the hoo
 Custom Models
 -------------
 
-```
+```php
 <?php
 
 namespace WordPress\ORM;
