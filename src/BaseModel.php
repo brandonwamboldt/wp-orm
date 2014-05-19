@@ -154,7 +154,7 @@ abstract class BaseModel
 
 			$this->{static::get_primary_key()} = $wpdb->insert_id;
 		} else {
-			$wpdb->update(static::get_table(), $props, [static::get_primary_key() => $this->{static::get_primary_key()}]);
+			$wpdb->update(static::get_table(), $props, array(static::get_primary_key() => $this->{static::get_primary_key()}));
 		}
 
 		return $this->id;
@@ -180,7 +180,7 @@ abstract class BaseModel
 	{
 		global $wpdb;
 
-		return $wpdb->delete(static::get_table(), [static::get_primary_key() => $this->{static::get_primary_key()}]);
+		return $wpdb->delete(static::get_table(), array(static::get_primary_key() => $this->{static::get_primary_key()}));
 	}
 
 	/**

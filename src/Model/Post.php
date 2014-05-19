@@ -247,6 +247,6 @@ class Post extends BaseModel
 	 */
 	public static function get_searchable_fields()
 	{
-		return ['post_title', 'post_content', 'post_excerpt'];
+		return array('post_title', 'post_content', 'post_excerpt');
 	}
 }

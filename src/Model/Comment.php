@@ -199,6 +199,6 @@ class Comment extends BaseModel
 	 */
 	public static function get_searchable_fields()
 	{
-		return ['comment_content'];
+		return array('comment_content');
 	}
 }

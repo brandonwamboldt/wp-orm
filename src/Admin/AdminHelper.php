@@ -19,7 +19,7 @@ class AdminHelper
 	 */
 	public static function setup_list_table_page($slug, $callback)
 	{
-		add_action('load-toplevel_page_' . $slug, [__CLASS__, 'pre_list_table_page']);
+		add_action('load-toplevel_page_' . $slug, array(__CLASS__, 'pre_list_table_page'));
 		add_action('toplevel_page_' . $slug, $callback);
 	}
 
@@ -52,7 +52,7 @@ class AdminHelper
 		if ($action) {
 			check_admin_referer('bulk-posts');
 
-			$sendback = remove_query_arg(['trashed', 'untrashed', 'deleted', 'locked', 'ids'], wp_get_referer());
+			$sendback = remove_query_arg(array('trashed', 'untrashed', 'deleted', 'locked', 'ids'), wp_get_referer());
 
 			// Comment this
 			if (!$sendback) {
@@ -109,7 +109,7 @@ class AdminHelper
 			wp_redirect($sendback);
 			exit;
 		}  elseif (!empty($_REQUEST['_wp_http_referer'])) {
-			wp_redirect(remove_query_arg(['_wp_http_referer', '_wpnonce'], wp_unslash($_SERVER['REQUEST_URI'])));
+			wp_redirect(remove_query_arg(array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI'])));
 			exit;
 		}
 

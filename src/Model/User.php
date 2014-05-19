@@ -170,6 +170,6 @@ class User extends BaseModel
 	 */
 	public static function get_searchable_fields()
 	{
-		return ['user_login', 'user_nicename', 'user_email', 'display_name'];
+		return array('user_login', 'user_nicename', 'user_email', 'display_name');
 	}
 }
