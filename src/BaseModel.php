@@ -10,6 +10,12 @@ namespace WordPress\ORM;
 abstract class BaseModel
 {
 	/**
+	 * Table prefix as specified in wp-config.php
+	 * @var string
+	 */
+	private $table_prefix;
+
+	/**
 	 * Overwrite this in your concrete class. Returns the table name used to
 	 * store models of this class.
 	 *
@@ -41,6 +47,9 @@ abstract class BaseModel
 	 */
 	public function __construct(array $properties = array())
 	{
+		global $wpdb;
+		$this->table_prefix = $wpdb->prefix;
+
 		$model_props = $this->properties();
 		$properties  = array_intersect_key($properties, $model_props);
 
@@ -252,5 +261,14 @@ abstract class BaseModel
 		}
 
 		return $results;
+	}
+
+	/**
+	 * Return configured table prefix.
+	 * @return string
+	 */
+	public function get_table_prefix()
+	{
+		return $this->table_prefix;
 	}
 }
