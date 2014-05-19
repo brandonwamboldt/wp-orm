@@ -9,3 +9,5 @@
  * License: MIT
  * License URI: http://opensource.org/licenses/MIT
  */
+
+include "vendor/autoload.php";
