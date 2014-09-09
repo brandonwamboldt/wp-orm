@@ -7,24 +7,8 @@ namespace WordPress\ORM;
  *
  * @author Brandon Wamboldt <brandon.wamboldt@gmail.com>
  */
-abstract class BaseModel
+abstract class BaseModel implements ModelInterface
 {
-
-	/**
-	 * Overwrite this in your concrete class. Returns the table name used to
-	 * store models of this class.
-	 *
-	 * @return string
-	 */
-	abstract public static function get_table();
-
-	/**
-	 * Get an array of fields to search during a search query.
-	 *
-	 * @return array
-	 */
-	abstract public static function get_searchable_fields();
-
 	/**
 	 * Get the column used as the primary key, defaults to 'id'.
 	 *
