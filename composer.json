@@ -1,0 +1,20 @@
+{
+    "name": "brandonwamboldt/wp-orm",
+    "description": "WordPress ORM",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brandon Wamboldt",
+            "email": "brandon.wamboldt@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "WordPress\\ORM\\": "src"
+        }
+    }
+}

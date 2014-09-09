@@ -9,6 +9,7 @@ namespace WordPress\ORM;
  */
 abstract class BaseModel
 {
+
 	/**
 	 * Overwrite this in your concrete class. Returns the table name used to
 	 * store models of this class.
@@ -154,7 +155,7 @@ abstract class BaseModel
 
 			$this->{static::get_primary_key()} = $wpdb->insert_id;
 		} else {
-			$wpdb->update(static::get_table(), $props, [static::get_primary_key() => $this->{static::get_primary_key()}]);
+			$wpdb->update(static::get_table(), $props, array(static::get_primary_key() => $this->{static::get_primary_key()}));
 		}
 
 		return $this->id;
@@ -180,7 +181,7 @@ abstract class BaseModel
 	{
 		global $wpdb;
 
-		return $wpdb->delete(static::get_table(), [static::get_primary_key() => $this->{static::get_primary_key()}]);
+		return $wpdb->delete(static::get_table(), array(static::get_primary_key() => $this->{static::get_primary_key()}));
 	}
 
 	/**
@@ -252,5 +253,15 @@ abstract class BaseModel
 		}
 
 		return $results;
+	}
+
+	/**
+	 * Return configured table prefix.
+	 * @return string
+	 */
+	public function get_table_prefix()
+	{
+		global $wpdb;
+		return $wpdb->prefix;
 	}
 }

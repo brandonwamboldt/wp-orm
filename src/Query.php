@@ -155,7 +155,7 @@ class Query
 	 */
 	public function where($column, $value)
 	{
-		$this->where[] = ['type' => 'where', 'column' => $column, 'value' => $value];
+		$this->where[] = array('type' => 'where', 'column' => $column, 'value' => $value);
 
 		return $this;
 	}
@@ -169,7 +169,7 @@ class Query
 	 */
 	public function where_not($column, $value)
 	{
-		$this->where[] = ['type' => 'not', 'column' => $column, 'value' => $value];
+		$this->where[] = array('type' => 'not', 'column' => $column, 'value' => $value);
 
 		return $this;
 	}
@@ -183,7 +183,7 @@ class Query
 	 */
 	public function where_like($column, $value)
 	{
-		$this->where[] = ['type' => 'like', 'column' => $column, 'value' => $value];
+		$this->where[] = array('type' => 'like', 'column' => $column, 'value' => $value);
 
 		return $this;
 	}
@@ -197,7 +197,7 @@ class Query
 	 */
 	public function where_not_like($column, $value)
 	{
-		$this->where[] = ['type' => 'not_like', 'column' => $column, 'value' => $value];
+		$this->where[] = array('type' => 'not_like', 'column' => $column, 'value' => $value);
 
 		return $this;
 	}
@@ -211,7 +211,7 @@ class Query
 	 */
 	public function where_lt($column, $value)
 	{
-		$this->where[] = ['type' => 'lt', 'column' => $column, 'value' => $value];
+		$this->where[] = array('type' => 'lt', 'column' => $column, 'value' => $value);
 
 		return $this;
 	}
@@ -225,7 +225,7 @@ class Query
 	 */
 	public function where_lte($column, $value)
 	{
-		$this->where[] = ['type' => 'lte', 'column' => $column, 'value' => $value];
+		$this->where[] = array('type' => 'lte', 'column' => $column, 'value' => $value);
 
 		return $this;
 	}
@@ -239,7 +239,7 @@ class Query
 	 */
 	public function where_gt($column, $value)
 	{
-		$this->where[] = ['type' => 'gt', 'column' => $column, 'value' => $value];
+		$this->where[] = array('type' => 'gt', 'column' => $column, 'value' => $value);
 
 		return $this;
 	}
@@ -253,7 +253,7 @@ class Query
 	 */
 	public function where_gte($column, $value)
 	{
-		$this->where[] = ['type' => 'gte', 'column' => $column, 'value' => $value];
+		$this->where[] = array('type' => 'gte', 'column' => $column, 'value' => $value);
 
 		return $this;
 	}
@@ -267,7 +267,7 @@ class Query
 	 */
 	public function where_in($column, array $in)
 	{
-		$this->where[] = ['type' => 'in', 'column' => $column, 'value' => $in];
+		$this->where[] = array('type' => 'in', 'column' => $column, 'value' => $in);
 
 		return $this;
 	}
@@ -281,7 +281,7 @@ class Query
 	 */
 	public function where_not_in($column, array $not_in)
 	{
-		$this->where[] = ['type' => 'not_in', 'column' => $column, 'value' => $not_in];
+		$this->where[] = array('type' => 'not_in', 'column' => $column, 'value' => $not_in);
 
 		return $this;
 	}
@@ -295,7 +295,7 @@ class Query
 	 */
 	public function where_any(array $where)
 	{
-		$this->where[] = ['type' => 'any', 'where' => $where];
+		$this->where[] = array('type' => 'any', 'where' => $where);
 
 		return $this;
 	}
@@ -309,7 +309,7 @@ class Query
 	 */
 	public function where_all(array $where)
 	{
-		$this->where[] = ['type' => 'all', 'where' => $where];
+		$this->where[] = array('type' => 'all', 'where' => $where);
 
 		return $this;
 	}
