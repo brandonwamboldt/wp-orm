@@ -186,7 +186,7 @@ Offset the results returned, used with pagination. Uses the SQL `OFFSET` clause.
 
 ##### $query->sort_by(string $property)
 
-Sort results by the specified property
+Sort results by the specified property. Can also be a MySQL function such as `RAND()`.
 
 ##### $query->order(string $order)
 

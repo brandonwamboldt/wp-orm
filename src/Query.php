@@ -495,7 +495,13 @@ class Query
         }
 
         // Order
-        $order = ' ORDER BY `' . $this->sort_by . '` ' . $this->order;
+        if (strstr($this->sort_by, '(') !== false && strstr($this->sort_by, ')') !== false) {
+            // The sort column contains () so we assume its a function, therefore
+            // don't quote it
+            $order = ' ORDER BY ' . $this->sort_by . ' ' . $this->order;
+        } else {
+            $order = ' ORDER BY `' . $this->sort_by . '` ' . $this->order;
+        }
 
         // Limit
         if ($this->limit > 0) {
