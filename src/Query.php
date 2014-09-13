@@ -80,7 +80,7 @@ class Query
      */
     public function __toString()
     {
-        return $this->composeQuery();
+        return $this->compose_query();
     }
 
     /**
@@ -362,10 +362,10 @@ class Query
 
         // Query
         if ($only_count) {
-            return (int) $wpdb->get_var($this->composeQuery(true));
+            return (int) $wpdb->get_var($this->compose_query(true));
         }
 
-        $results = $wpdb->get_results($this->composeQuery(false));
+        $results = $wpdb->get_results($this->compose_query(false));
 
         if ($results) {
             foreach ($results as $index => $result) {
@@ -382,7 +382,7 @@ class Query
      * @param  boolean $only_count Whether to only return the row count
      * @return string
      */
-    public function composeQuery($only_count = false)
+    public function compose_query($only_count = false)
     {
         $model  = $this->model;
         $table  = $model::get_table();
