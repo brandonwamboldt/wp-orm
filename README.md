@@ -20,7 +20,7 @@ Examples
 #### Get 5 published pages, ordered by post title.
 
 ```php
-use WordPress\Orm\Model\Page;
+use WordPress\ORM\Model\Page;
 
 $pages = Page::query()
 	->limit(5)
@@ -33,7 +33,7 @@ $pages = Page::query()
 #### Find a  user by their login
 
 ```php
-use WordPress\Orm\Model\User;
+use WordPress\ORM\Model\User;
 
 $user = User::find_one_by('user_login', 'brandon');
 
@@ -45,7 +45,7 @@ print_r($user->to_array());
 #### Example of a more complex query
 
 ```php
-use WordPress\Orm\Model\Post;
+use WordPress\ORM\Model\Post;
 
 $posts = Post::query()
 	->limit(15)
@@ -60,7 +60,7 @@ $posts = Post::query()
 #### Updating a model
 
 ```php
-use WordPress\Orm\Model\Post;
+use WordPress\ORM\Model\Post;
 
 $post = Post::find_one(1204);
 $post->set_post_title('What an amazing post!');
@@ -145,7 +145,7 @@ Find a single model who's primary key is equal to the given ID.
 
 ##### Model::query()
 
-Return a new `WordPress\Orm\Query` object.
+Return a new `WordPress\ORM\Query` object.
 
 ##### Model::all()
 
