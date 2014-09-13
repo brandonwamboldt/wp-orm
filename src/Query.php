@@ -74,6 +74,16 @@ class Query
     }
 
     /**
+     * Return the string representation of the query.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->composeQuery();
+    }
+
+    /**
      * Set the fields to include in the search.
      *
      * @param  array $fields
@@ -341,12 +351,39 @@ class Query
     /**
      * Compose & execute our query.
      *
+     * @param  boolean $only_count Whether to only return the row count
      * @return array
      */
     public function find($only_count = false)
     {
         global $wpdb;
 
+        $model = $this->model;
+
+        // Query
+        if ($only_count) {
+            return (int) $wpdb->get_var($this->composeQuery(true));
+        }
+
+        $results = $wpdb->get_results($this->composeQuery(false));
+
+        if ($results) {
+            foreach ($results as $index => $result) {
+                $results[$index] = $model::create((array) $result);
+            }
+        }
+
+        return $results;
+    }
+
+    /**
+     * Compose the actual SQL query from all of our filters and options.
+     *
+     * @param  boolean $only_count Whether to only return the row count
+     * @return string
+     */
+    public function composeQuery($only_count = false)
+    {
         $model  = $this->model;
         $table  = $model::get_table();
         $where  = '';
@@ -472,21 +509,9 @@ class Query
 
         // Query
         if ($only_count) {
-            $query = "SELECT COUNT(*) FROM `{$table}`{$where}";
-
-            return (int) $wpdb->get_var($query);
+            return "SELECT COUNT(*) FROM `{$table}`{$where}";
         }
 
-        $query = "SELECT * FROM `{$table}`{$where}{$order}{$limit}{$offset}";
-
-        $results = $wpdb->get_results($query);
-
-        if ($results) {
-            foreach ($results as $index => $result) {
-                $results[$index] = $model::create((array) $result);
-            }
-        }
-
-        return $results;
+        return "SELECT * FROM `{$table}`{$where}{$order}{$limit}{$offset}";
     }
 }
