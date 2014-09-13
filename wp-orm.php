@@ -10,4 +10,5 @@
  * License URI: http://opensource.org/licenses/MIT
  */
 
-include "vendor/autoload.php";
+require 'vendor/autoload.php';
+
