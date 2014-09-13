@@ -244,6 +244,37 @@ Limit results to items that match any of the property/value pairs given in the a
 
 Limit results to items that match all of the property/value pairs given in the array.
 
+Actions & Filters
+-----------------
+
+#### wporm_query($sql, $model_class)
+
+Manipulate the raw SQL query created by the Query class.
+
+```php
+add_filter('wporm_query', function($sql, $model_class) {
+	if ($model_class == 'WordPress\ORM\Model\Page') {
+		$sql = str_replace('wp_posts', 'wp2_posts', $sql);
+	}
+
+	return $sql;
+}, 10, 2);
+```
+
+#### wporm_count_query($sql, $model_class)
+
+Manipulate the raw SQL query created by the Query class (the row count variation).
+
+```php
+add_filter('wporm_count_query', function($sql, $model_class) {
+	if ($model_class == 'WordPress\ORM\Model\Page') {
+		$sql = str_replace('wp_posts', 'wp2_posts', $sql);
+	}
+
+	return $sql;
+}, 10, 2);
+```
+
 License
 -------
 

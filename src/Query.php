@@ -509,9 +509,9 @@ class Query
 
         // Query
         if ($only_count) {
-            return "SELECT COUNT(*) FROM `{$table}`{$where}";
+            return apply_filters('wporm_count_query', "SELECT COUNT(*) FROM `{$table}`{$where}", $this->model);
         }
 
-        return "SELECT * FROM `{$table}`{$where}{$order}{$limit}{$offset}";
+        return apply_filters('wporm_query', "SELECT * FROM `{$table}`{$where}{$order}{$limit}{$offset}", $this->model);
     }
 }
