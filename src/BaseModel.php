@@ -206,7 +206,7 @@ abstract class BaseModel implements ModelInterface
     /**
      * Start a query to find models matching specific criteria.
      *
-     * @return ModelQuery
+     * @return Query
      */
     public static function query()
     {
